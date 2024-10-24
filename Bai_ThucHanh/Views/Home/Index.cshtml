@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Bai_ThucHanh.Models.Productcs>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="products-tabs">
+            <!-- tab -->
+            <div id="tab1" class="tab-pane active">
+                <div class="products-slick" data-nav="#slick-nav-1">
+                    @foreach (var item in Model)
+                    {
+                        <!-- product -->
+
+                        <div class="product">
+                            <div class="product-img">
+                                <img src="@item.ImageUrl" alt="">
+                                <div class="product-label">
+                                    <span class="sale">-30%</span>
+                                    <span class="new">NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">@item.Category?.Name</p>
+                                <h3 class="product-name">
+                                    @*            truy cap toi trang producst.dateil *@
+                                    <a asp-controller="Productcs" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+
+                                </h3>
+                                <h4 class="product-price">@item.Price <del class="product-old-price">$990.00</del></h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            </div>
+                        </div>
+
+                        <!-- /product -->
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /tab -->
+    </div>
+</div>
